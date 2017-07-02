@@ -1,12 +1,8 @@
 package com.github.protobufel.test.util;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
-import org.assertj.core.util.Objects;
 import org.assertj.core.util.Preconditions;
 import org.assertj.core.util.introspection.Introspection;
 
@@ -39,7 +35,7 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
     
     for (Method method : getMethods(o1)) {
       try {
-        if (!Objects.areEqual(method.invoke(o1), method.invoke(o1))) {
+        if (!Objects.equals(method.invoke(o1), method.invoke(o1))) {
           // this comparator is for custom equality, so either -1, or 1 would do!   
           return -1;
         }
@@ -57,8 +53,7 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
 
       for (String propName : propNames) {
         final Method method =
-            Preconditions.checkNotNull(Introspection.getProperty(propName, object)
-                .getReadMethod());
+            Objects.requireNonNull(Introspection.getPropertyGetter(propName, object));
         methods.add(method);
       }
       

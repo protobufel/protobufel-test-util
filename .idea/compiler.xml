@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="com.github.protobufel.protobufel-test-util_jmh" target="1.8" />
-      <module name="com.github.protobufel.protobufel-test-util_main" target="1.8" />
-      <module name="com.github.protobufel.protobufel-test-util_test" target="1.8" />
+      <module name="com.github.protobufel.protobufel-test-util_jmh" target="1.7" />
+      <module name="com.github.protobufel.protobufel-test-util_main" target="1.7" />
+      <module name="com.github.protobufel.protobufel-test-util_test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
