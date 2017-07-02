@@ -22,7 +22,7 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
   public static <T> BeanPropertiesComparator<T> of(final String... propNames) {
     return new BeanPropertiesComparator<T>(propNames);
   }
-  
+
   @Override
   public int compare(T o1, T o2) {
     if (o1 == o2) {
@@ -31,8 +31,8 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
       return (o2 == null) ? 0 : -1;
     } else if (o2 == null) {
       return (o1 == null) ? 0 : 1;
-    } 
-    
+    }
+
     for (Method method : getMethods(o1)) {
       try {
         if (!Objects.equals(method.invoke(o1), method.invoke(o1))) {
@@ -43,7 +43,7 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
         new RuntimeException(e);
       }
     }
-    
+
     return 0;
   }
 
@@ -53,10 +53,10 @@ public final class BeanPropertiesComparator<T> implements Comparator<T> {
 
       for (String propName : propNames) {
         final Method method =
-            Objects.requireNonNull(Introspection.getPropertyGetter(propName, object));
+                Objects.requireNonNull(Introspection.getPropertyGetter(propName, object));
         methods.add(method);
       }
-      
+
       this.methods = Collections.unmodifiableList(methods);
     }
 
